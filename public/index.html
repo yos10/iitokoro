@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="assessment.css">
+  <title>あなたのいいところ診断</title>
+</head>
+
+<body>
+  <h1>あなたのいいところは?</h1>
+  <p>診断したい名前を入れて下さい</p>
+  <input type="text" id="user-name" size="40" maxlength="20">
+  <button id="assessment">診断する</button>
+  <div id="result-area"></div>
+  <div id="tweet-area"></div>
+  <script src="assessment.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCbUx5C6nC8YKdCol8KEtiahWuJmmSFcZc",
+      authDomain: "iitokoro-1f59c.firebaseapp.com",
+      projectId: "iitokoro-1f59c",
+      storageBucket: "iitokoro-1f59c.appspot.com",
+      messagingSenderId: "555478844194",
+      appId: "1:555478844194:web:c4d77aac51b136349e5b7b",
+      measurementId: "G-Q68GQVEPZW"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+
+</html>
