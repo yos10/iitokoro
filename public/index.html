@@ -54,7 +54,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js";
-    import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -94,6 +94,25 @@
         })
         .catch((error) => {
           alert('登録に失敗しました[' + error.message + ']');
+        });
+    });
+
+    // ログイン処理
+    const loginForm = document.getElementById('login-form');
+    const mailAddressInput = document.getElementById('mailAddress');
+    const passwordInput = document.getElementById('password');
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const mailAddress = mailAddressInput.value;
+      const password = passwordInput.value;
+      signInWithEmailAndPassword(auth, mailAddress, password)
+        .then(() => {
+          // ログインフォームを初期化
+          mailAddressInput.value = '';
+          passwordInput.value = '';
+        })
+        .catch((error) => {
+          alert('ログインに失敗しました[' + error.message + ']');
         });
     });
 
