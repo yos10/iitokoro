@@ -122,15 +122,30 @@
       signOut(auth);
     });
 
+    // ログイン周りの処理の各エリア
+    const userArea = document.getElementById('user-area');
+    const loginArea = document.getElementById('login-area');
+    const registerArea = document.getElementById('register-area');
+
     // 認証状態の変更を画面に反映する
     onAuthStateChanged(auth, (user) => {
+      // ログイン周りの処理の各エリア全てを一旦非表示にする
+      userArea.style.display = 'none';
+      loginArea.style.display = 'none';
+      registerArea.style.display = 'none';
       const userEmailText = document.getElementById('user-email-text');
       if (user) {
         userEmailText.innerText = user.email;
+        // ログインしている場合のエリアを表示する
+        userArea.style.display = 'block';
       } else {
         userEmailText.innerText = '';
+        // ログインしていない場合のエリアを表示する
+        loginArea.style.display = 'block';
+        registerArea.style.display = 'block';
       }
     });
+
   </script>
 </body>
 
